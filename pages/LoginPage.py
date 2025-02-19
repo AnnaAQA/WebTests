@@ -1,3 +1,5 @@
+import allure
+
 from pages.BasePage import BasePage
 from selenium.webdriver.common.by import By
 
@@ -34,11 +36,16 @@ class LoginPageHelpers(BasePage):
         self.find_element(LoginPageLocators.MAIL_LINK)
         self.find_element(LoginPageLocators.YANDEX_LINK)
 
+    @allure.step('Кликаем на кнопку Войти в Одноклассники')
     def click_login(self):
+        self.attach_screenshot()
         self.find_element(LoginPageLocators.LOGIN_BUTTON).click()
 
+    @allure.step('Получаем текст ошибки')
     def get_error_text(self):
+        self.attach_screenshot()
         return self.find_element(LoginPageLocators.ERROR_TEXT).text
 
+    @allure.step('Вводим в поле ввода валидный номер телефона')
     def click_field_email_mobile(self, value=None):
         self.find_element(LoginPageLocators.EMAIL_FIELD).send_keys(value)
