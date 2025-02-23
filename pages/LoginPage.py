@@ -1,5 +1,4 @@
 import allure
-
 from pages.BasePage import BasePage
 from selenium.webdriver.common.by import By
 
@@ -16,7 +15,9 @@ class LoginPageLocators:
     MAIL_LINK = (By.XPATH, '//*[@data-l="t,mailru"]')
     YANDEX_LINK = (By.XPATH, '//*[@data-l="t,yandex"]')
     ERROR_TEXT = (By.XPATH, '//*[@class="input-e login_error"]')
-
+    GO_BACK_BUTTON = (By.XPATH, '//*[@data-l="t,cancel"]')
+    SUPPORT_BUTTON = (By.XPATH, '//*[@class="external-oauth-login-help portlet_f"]')
+    PROFILE_RECOVERY_BUTTON = (By.XPATH, '//*[@name="st.go_to_recovery"]')
 
 class LoginPageHelpers(BasePage):
     def __init__(self, driver):
@@ -24,6 +25,8 @@ class LoginPageHelpers(BasePage):
         self.check_page()
 
     def check_page(self):
+        with allure.step('Проверяем корректность загрузки страницы'):
+            self.attach_screenshot()
         self.find_element(LoginPageLocators.EMAIL_FIELD)
         self.find_element(LoginPageLocators.LOGIN_BUTTON)
         self.find_element(LoginPageLocators.HOME_ENTER_TAB)
@@ -49,3 +52,14 @@ class LoginPageHelpers(BasePage):
     @allure.step('Вводим в поле ввода валидный номер телефона')
     def click_field_email_mobile(self, value=None):
         self.find_element(LoginPageLocators.EMAIL_FIELD).send_keys(value)
+        self.attach_screenshot()
+
+    @allure.step('Вводим в поле ввода невалидный пароль')
+    def click_field_password(self, password):
+        self.find_element(LoginPageLocators.PASSWORD_FIELD).send_keys(password)
+        self.attach_screenshot()
+
+    @allure.step('Перешли к восстановлению')
+    def click_recovery(self):
+        self.attach_screenshot()
+        self.find_element(LoginPageLocators.PROFILE_RECOVERY_BUTTON).click()
