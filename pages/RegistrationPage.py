@@ -4,7 +4,7 @@ from pages.BasePage import BasePage
 from selenium.webdriver.common.by import By
 
 class RegistarionPageLocators:
-    PHONE_FIELD = (By.XPATH, '//div[@data-l="t,phone"]')
+    PHONE_FIELD = (By.XPATH, '//*[@id="field_phone"]')
     COUNTRY_LIST = (By.XPATH, '//div[@data-l="t,country"]')
     COUNTRY_ITEM = (By.XPATH, '//div[@class="country-select_code"]')
     SUBMIT_BUTTON = (By.XPATH, '//input[@data-l="t,submit"]')
@@ -32,4 +32,4 @@ class RegistrationPageHelper(BasePage):
         return country_code
 
     def get_phone_field_value(self):
-        return self.find_element(RegistarionPageLocators.PHONE_FIELD).text
+        return self.find_element(RegistarionPageLocators.PHONE_FIELD).get_attribute('value')

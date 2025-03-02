@@ -15,6 +15,4 @@ def test_registration_random_country(browser):
     RegistrationPage = RegistrationPageHelper(browser)
     Selected_country_code = RegistrationPage.select_random_country()
     Actual_country_code = RegistrationPage.get_phone_field_value()
-    print(Selected_country_code)
-    print(Actual_country_code)
     assert Selected_country_code == Actual_country_code
