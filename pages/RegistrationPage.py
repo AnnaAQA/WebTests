@@ -27,7 +27,7 @@ class RegistrationPageHelper(BasePage):
         random_number = random.randint(0, 212)
         self.find_element(RegistarionPageLocators.COUNTRY_LIST).click()
         country_items = self.find_elements(RegistarionPageLocators.COUNTRY_ITEM)
-        country_code = country_items[random_number].get_attribute('text')
+        country_code = country_items[random_number].text
         country_items[random_number].click()
         return country_code
 
