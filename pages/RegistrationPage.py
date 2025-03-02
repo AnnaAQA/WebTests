@@ -32,4 +32,4 @@ class RegistrationPageHelper(BasePage):
         return country_code
 
     def get_phone_field_value(self):
-        return self.find_element(RegistarionPageLocators.PHONE_FIELD).get_attribute('value')
+        return self.find_element(RegistarionPageLocators.PHONE_FIELD).text
