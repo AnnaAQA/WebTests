@@ -1,6 +1,6 @@
 from core.BaseTest import browser
 from pages.BasePage import BasePageHelper
-from pages.LoginPage import LoginPageHelperHelpers
+from pages.LoginPage import LoginPageHelper
 import  allure
 
 BASE_URL = 'https://ok.ru/'
@@ -12,7 +12,7 @@ FIELD_TEXT_MOBILE = '9110008877'
 @allure.title('Проверка ошибки, если не введен логин')
 def test_empty_login(browser):
     BasePageHelper(browser).get_url(BASE_URL)
-    LoginPage = LoginPageHelperHelpers(browser)
+    LoginPage = LoginPageHelper(browser)
     LoginPage.click_login()
     assert LoginPage.get_error_text() == EMPTY_LOGIN_ERROR
 
@@ -20,7 +20,7 @@ def test_empty_login(browser):
 @allure.title('Проверка ошибки, если не введен пароль')
 def test_empty_password(browser):
     BasePageHelper(browser).get_url(BASE_URL)
-    LoginPage = LoginPageHelperHelpers(browser)
+    LoginPage = LoginPageHelper(browser)
     LoginPage.click_field_email_mobile(FIELD_TEXT_MOBILE)
     LoginPage.click_login()
     assert LoginPage.get_error_text() == EMPTY_PASSWORD_ERROR

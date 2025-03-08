@@ -42,3 +42,9 @@ class BasePageHelper:
     @allure.step('Нажимаем на кнопку "Еще"')
     def click_more_button(self):
         self.find_element(BasePageLocators.MORE_BUTTON).click()
+
+    def get_windows_id(self, index):
+        return self.driver.window_handles[index]
+
+    def switch_window(self, window_id):
+        self.driver.switch_to.window(window_id)

@@ -1,6 +1,6 @@
 from core.BaseTest import browser
 from pages.BasePage import BasePageHelper
-from pages.LoginPage import LoginPageHelperHelpers
+from pages.LoginPage import LoginPageHelper
 from pages.RecoveryPage import RecoveryPageHelperHelpers
 import  allure
 
@@ -14,7 +14,7 @@ PASSWORD_TEXT = 'psw'
 @allure.title('Проверка перехода к странице восстановления после нескольких неудачных попыток авторизации')
 def test_go_to_recovery_after_many_auth_fails(browser):
     BasePageHelper(browser).get_url(BASE_URL)
-    LoginPage = LoginPageHelperHelpers(browser)
+    LoginPage = LoginPageHelper(browser)
     LoginPage.click_field_email_mobile(EMAIL_TEXT)
 
     for i in range(3):
