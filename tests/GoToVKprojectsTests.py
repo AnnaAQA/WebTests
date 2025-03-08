@@ -15,4 +15,4 @@ def test_open_vk_projects(browser):
     LoginPage = LoginPageHelperHelpers(browser)
     LoginPage.click_vk_ecosystem()
     LoginPage.click_more_button()
-    VKprojectsPageHelper()
+    VKprojectsPageHelper(browser)
