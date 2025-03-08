@@ -1,11 +1,11 @@
 import allure
-from pages.BasePage import BasePage
+from pages.BasePage import BasePageHelper
 from selenium.webdriver.common.by import By
 
 class AdvertisingCabinetHelpLocators:
     TITLE = (By.XPATH, '//span[text()="Рекламный кабинет"]')
 
-class AdvertisingCabinetHelpHelpers(BasePage):
+class AdvertisingCabinetHelpHelpers(BasePageHelper):
     def __init__(self, driver):
         self.driver = driver
         self.check_page()
